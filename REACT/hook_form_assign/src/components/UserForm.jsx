@@ -21,22 +21,57 @@ const UserForm = (props) => {
             <div>
                 <label>First Name: </label>
                 <input type="text" onChange={ (e) => setFirstName(e.target.value) } />
+                {
+                    firstName != "" ?
+                    firstName.length < 3 || firstName.length > 20 ?
+                        <p className="text-danger">Name must be between 2-20 characters</p>
+                        : ""
+                    : ""
+                }
             </div>
             <div>
                 <label>Last Name: </label>
                 <input type="text" onChange={ (e) => setLastName(e.target.value) } />
+                {
+                    lastName != "" ?
+                    lastName.length < 3 || lastName.length > 20 ?
+                        <p className="text-danger">Name must be between 2-20 characters</p>
+                        : ""
+                    : ""
+                }
             </div>
             <div>
                 <label>Email: </label>
                 <input type="email" onChange={ (e) => setEmail(e.target.value) } />
+                {
+                    email != "" ?
+                    email.length < 5 ?
+                        <p className="text-danger">Email must be at least 5 characters</p>
+                        : ""
+                    : ""
+                }
             </div>
             <div>
                 <label>Password: </label>
                 <input type="password" onChange={ (e) => setPassword(e.target.value) } />
             </div>
+                {
+                    password != "" ?
+                    password.length < 8 ?
+                        <p className="text-danger">Password must be at least 8 characters</p>
+                        : ""
+                    : ""
+                }
             <div>
                 <label>Confirm Password: </label>
                 <input type="password" onChange={ (e) => setConfirmPassword(e.target.value) } />
+                {
+                    confirmPassword != "" ?
+                    confirmPassword.length < 8  || password !== confirmPassword ?
+                        <p className="text-danger">Password must be at least 8 characters and the passwords mush match</p>
+                        : ""
+                    : ""
+                }
             </div>
             <input type="submit" value="Create User" />
             </form>
