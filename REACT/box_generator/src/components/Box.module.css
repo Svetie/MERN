@@ -1,0 +1,12 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.containerBox {
+    display: flex;
+    width: 40%;
+    margin: 0px auto;
+    justify-content: space-evenly;
+    flex-wrap: wrap
+}
