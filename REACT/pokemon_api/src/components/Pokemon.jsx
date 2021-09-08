@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Pokemon = () => {
 
@@ -7,19 +8,21 @@ const Pokemon = () => {
     
     const clickHandler = ()=>{
         console.log("clicked!")
-        fetch("https://pokeapi.co/api/v2/pokemon")
+        axios.get("https://pokeapi.co/api/v2/pokemon")
             .then(response=>{
-            return response.json()
-            }) 
-            .then(response=>{
-            console.log("the response looks like this")
-            console.log(response)
-            console.log(response.results)
+                
+            console.log('the response is');
+            console.log(response);
+            console.log('the response.results is');
+            console.log(response.data);
+            console.log('the response.data.results is');
+            console.log(response.data.results);
 
-            response.results.sort((a, b) => a.name.localeCompare(b.name))
+
+            response.data.results.sort((a, b) => a.name.localeCompare(b.name))
 
             // pokemon response.results
-            setAllPokemon(response.results);
+            setAllPokemon(response.data.results);
         })
         .catch(err=>{
             console.log(err)
