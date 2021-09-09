@@ -8,7 +8,7 @@ const Pokemon = () => {
     
     const clickHandler = ()=>{
         console.log("clicked!")
-        axios.get("https://pokeapi.co/api/v2/pokemon")
+        axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
             .then(response=>{
                 
             console.log('the response is');
