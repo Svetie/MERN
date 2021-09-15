@@ -16,7 +16,7 @@ const AllProducts = () => {
             .catch(err=>{
                 console.log(err);
             })
-    })
+    },[])
 
     return (
         <div>

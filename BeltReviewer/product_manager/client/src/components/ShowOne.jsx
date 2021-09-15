@@ -16,7 +16,7 @@ const ShowOne = () => {
             .catch(err=>{
                 console.log(err);
             })
-    })
+    },[id])
 
 
     return (
