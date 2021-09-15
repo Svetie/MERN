@@ -3,10 +3,11 @@ import React from 'react';
 import {
   BrowserRouter,
   Switch,
-  Route,
-  Link 
+  Route
 } from "react-router-dom";
 import ProductForm from './components/ProductForm';
+import AllProducts from './components/AllProducts';
+import ShowOne from './components/ShowOne';
 
 function App() {
   return (
@@ -14,11 +15,11 @@ function App() {
       <BrowserRouter>
       <Switch>
         <Route exact path="/">
-
-        </Route>
-        <Route exact path="/new">
-          <Link to="/" className="btn btn-success ">Home</Link>
           <ProductForm></ProductForm>
+          <AllProducts></AllProducts>
+        </Route>
+        <Route exact path="/:id">
+          <ShowOne></ShowOne>
         </Route>
       </Switch>
       </BrowserRouter>
