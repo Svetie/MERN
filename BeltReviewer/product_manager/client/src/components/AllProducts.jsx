@@ -8,6 +8,8 @@ const AllProducts = () => {
 
     const [ allProducts, setAllProducts ] = useState([]);
 
+    const [ deleteClicked, setDeleteClicked ] = useState(false);
+
     useEffect(()=>{
         axios.get("http://localhost:8000/api/products")
             .then(res=>{
@@ -16,16 +18,28 @@ const AllProducts = () => {
             .catch(err=>{
                 console.log(err);
             })
-    },[])
+    },[deleteClicked])
+
+    const deleteClickHandler = (e, id) =>{
+        console.log("deleting a product ", id)
+        axios.delete(`http://localhost:8000/api/products/${id}`)
+            .then(res =>{
+                console.log('res after delete ', res)
+                setDeleteClicked(!deleteClicked);
+            })
+            .catch(err =>{
+                console.log('error is ', err)
+            })
+    }
 
     return (
         <div>
             <h1>All Products</h1>
             {
                 allProducts.map((product, i)=>{
-                    let id = product._id;
-                    let link = "/" + id;
-                    return <p key={i}><Link to={link} key={i}>{product.title}</Link></p>
+                    return <div key={i}>
+                    <p ><Link to={`/${product._id}`} key={i}>{product.title}</Link> <Link to={`/${product._id}/edit`} className="btn btn-success">Edit</Link>  <button onClick={(e)=>deleteClickHandler(e, product._id)} className="btn btn-danger">Delete Product</button></p>
+                    </div>
                 })
             }
 

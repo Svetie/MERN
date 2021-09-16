@@ -8,6 +8,7 @@ import {
 import ProductForm from './components/ProductForm';
 import AllProducts from './components/AllProducts';
 import ShowOne from './components/ShowOne';
+import EditProduct from './components/EditProduct';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route exact path="/:id">
           <ShowOne></ShowOne>
+        </Route>
+        <Route exact path="/:id/edit">
+          <EditProduct></EditProduct>
         </Route>
       </Switch>
       </BrowserRouter>
